@@ -18,9 +18,10 @@ public class StepsSiteOlx {
 
 	private WebDriver driver;
 	private String url = "https://www.olx.com.br/";
+	// inserir o email para executar o teste
 	private String email = "teste15885@gmail.com";
+	// inserir a senha para executar o teste
 	private String senha = "15teste885";
-	private String usuario = "teste";
 
 	@Before
 	public void iniciando() {
@@ -37,101 +38,85 @@ public class StepsSiteOlx {
 	}
 
 	// validando a tag @login
-	// validaÁ„o OK
+	// validacao OK
 	@Dado("que acesso a tela de login")
 	public void queAcessoATelaDeLogin() {
-		driver.findElement(By.xpath("//*[@class='sc-emmjRN koQeqJ']//span[.='Entrar']")).click();
+		driver.findElement(By.linkText("Entrar")).click();
 	}
 
-	// validaÁ„o OK
+	// valida√ß√£o OK
 	@Quando("preencher os campos email e senha")
 	public void preencherOsCamposEmailESenha() {
-		driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
 		driver.findElement(By.xpath("//*[@id='__next']//input[@type='email']")).sendKeys(email);
 		driver.findElement(By.xpath("//*[@id='__next']//input[@type='password']")).sendKeys(senha);
 	}
 
-	// validaÁ„o OK
+	// valida√ß√£o OK
 	@Quando("clicar no botao entrar")
 	public void clicarNoBotaoEntrar() {
 		driver.findElement(By.xpath("//*[@id='__next']//button[.='Entrar']")).click();
 	}
 
-	// validaÁ„o OK
+	// valida√ß√£o OK
 	@Entao("o login sera efetuado")
 	public void oLoginSeraEfetuado() {
 		driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
-		driver.findElement(By.xpath("//*[@id='__next']//a")).click();
-		String nome = driver.findElement(By.xpath("//*[@class='sc-eerKOB juBRqq']//span[.='teste']")).getText();
-		assertEquals("teste", nome);
-	}
-
-	// Acessa bloeuado por excessivas tentativas
-	// validando a tag @busca
-	// validaÁ„o OK
-	@Dado("que acesso o site olx")
-	public void queAcessoOSiteOlx() {
-		queAcessoATelaDeLogin();
-		preencherOsCamposEmailESenha();
-		clicarNoBotaoEntrar();
-
-		// redirecionando para a tela principal
-		driver.findElement(By.xpath("//*[@id='__next']//a")).click();
-	}
-
-	// validaÁ„o OK
-	@Quando("buscar o produto")
-	public void buscarOProduto() {
-		driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
-		driver.findElement(By.xpath("//*[@id='react-autowhatever-1']/../input")).sendKeys("Tracker 20/21");
-		driver.findElement(By.xpath("//*[@id='react-autowhatever-1']/../../..//button")).click();
-	}
-
-	@Quando("selecionar o estado")
-	public void selecionarOEstado() {
-		// selecionando o estado do Paran·
-		driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
-		driver.findElement(By.xpath("//*[@class='h3us20-2 bdQAUC']//a[.='Brasil']")).click();
-		driver.findElement(By.linkText("Paran·")).click();
-
-		// validando o estado
-		String estado = driver
-				.findElement(By.xpath("//*[@id='column-main-content']//h1[.='\"Tracker 20/21\" no Paran·']")).getText();
-		assertEquals("\"Tracker 20/21\" no Paran·", estado);
-		driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
-
-		// n„o est· funcionando
-//		driver.findElement(By.xpath("//*[@id='ad-list']//h2[.='Tracker 20/21']")).click();
-//		driver.findElement(By.xpath("//*[@id='ad-list']//img")).click();
-//		driver.findElement(By.xpath("//h2[@title='Tracker 20/21']")).click();
-//		driver.findElement(By.xpath("//div[@class='fnmrjs-6 iNpuEh']")).click();
-		driver.findElement(By.xpath("//*[@id='ad-list']//a")).click();
-	}
-
-	// validaÁ„o OK
-	@Entao("exibira o produto")
-	public void exibiraOProduto() {
-		driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
-		String link = "https://pr.olx.com.br/regiao-de-londrina/autos-e-pecas/carros-vans-e-utilitarios/tracker-20-21-842850093";
-		driver.get(link);
-
-		String produto = driver.findElement(By.xpath("//*[@class='en9h1n-0 kKbJNQ']//h1[.='Tracker 20/21']")).getText();
-		assertEquals("Tracker 20/21", produto);
+		String usuario = driver.findElement(By.xpath("//*[@class='sc-kyCyAI brUCvn']//span[.='teste']")).getText();
+		assertEquals("teste", usuario);
 	}
 
 	// validando a tag @logout
-	// validaÁao
-	@Quando("clicar em sair")
-	public void clicarEmSair() {
-		driver.findElement(By.xpath("//*[@class='sc-fhYwyz oljyb']//span[.='teste']")).click();
-		driver.findElement(By.xpath("//*[@class='sc-fjdhpX fUKTLX sc-gHboQg exLNXi']//li/a[.='Sair']")).click();
+	// validacao OK
+	@Dado("que acesso o site olx")
+	public void queAcessoOSiteOlx() {
+//		queAcessoATelaDeLogin();
+//		preencherOsCamposEmailESenha();
+//		clicarNoBotaoEntrar();
 	}
 
-	@Entao("efetuara o lougout")
-	public void efetuaraOLougout() {
-		String logout = driver.findElement
-				(By.xpath("//*[@id='__next']//span[.='teste, que bom te ver aqui de novo']")).getText();
-		assertEquals("teste, que bom te ver aqui de novo", logout);
+	// valida√ß√£o OK
+	@Quando("clicar em sair")
+	public void clicarEmSair() {
+		driver.findElement(By.xpath("//*[@class='sc-kyCyAI brUCvn']//span[.='teste']")).click();
+		driver.findElement(By.xpath("//a[.='Sair']")).click();
+	}
+
+	// valida√ß√£o OK
+	@Entao("usuario efetuara o logout")
+	public void usuarioEfetuaraOLogout() {
+		String logout = driver.findElement(By.xpath("//*[@id='___gatsby']//span[.='Entrar']")).getText();
+		assertEquals("Entrar", logout);
+	}
+
+	// validando a tag @logout
+	// validacao OK
+	@Quando("buscar o produto")
+	public void buscarOProduto() {
+//		driver.findElement(By.xpath("//*[@id='main-page-content']//a")).click();
+//		driver.findElement(By.xpath("//*[@id='root']//a")).click();
+		driver.findElement(By.xpath("//*[@class='iza-top']//input[@type='text']")).sendKeys("Tracker 20/21");
+		driver.findElement(By.xpath("//*[@class='iza-top']//button")).click();
+//		driver.findElement(By.xpath("//*[@id='react-autowhatever-1']/../input")).sendKeys("Tracker 20/21");
+//		driver.findElement(By.xpath("//*[@id='react-autowhatever-1']/../../..//button")).click();
+	}
+
+	// valida√ß√£o OK
+	@Quando("selecionar o estado")
+	public void selecionarOEstado() {
+		driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
+		driver.findElement(By.xpath("//*[@id='content']//a[.='Brasil']")).click();
+		driver.findElement(By.linkText("Paran√°")).click();
+	}
+
+	@Entao("exibira o produto selecionado")
+	public void exibiraOProdutoSelecionado() {
+		driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
+		String estado = driver.findElement(By.xpath("//*[@id='content']//h1[.='\"Tracker 20/21\" no Paran√°']"))
+				.getText();
+		assertEquals("\"Tracker 20/21\" no Paran√°", estado);
+
+		String produto = driver.findElement(By.xpath("//*[@id='content']//h2[.='Tracker 20/21']")).getText();
+		assertEquals("Tracker 20/21", produto);
 	}
 
 }

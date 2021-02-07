@@ -1,6 +1,6 @@
 #language:pt
 
-Funcionalidade: acessar o site olx
+Funcionalidade: efetuar uma busca no site da OLX
 	Como um usuario
 	Quando eu acessar o site da olx
 	Devo efetuar uma busca de produto
@@ -12,15 +12,15 @@ Funcionalidade: acessar o site olx
 		E clicar no botao entrar
 		Entao o login sera efetuado
 		
+	@logout
+	Cenario: sair do login
+		Dado que acesso o site olx
+		Quando clicar em sair
+		Entao usuario efetuara o logout 
+		
 	@busca
 	Cenario: selecionar estado
 		Dado que acesso o site olx
 		Quando buscar o produto
 		E selecionar o estado
-		Entao exibira o produto
-		
-	@logout
-	Cenario: sair do login
-		Dado que acesso o site olx
-		Quando clicar em sair
-		Entao efetuara o lougout 
+		Entao exibira o produto selecionado
