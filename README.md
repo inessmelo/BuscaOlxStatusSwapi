@@ -10,5 +10,7 @@ Para efetuar o teste no site OLX deve ser verificado
 1) deverá o usuário inserir o email e senha na classe Steps para conseguir efetuar o teste com sucesso
 2) deverá mudar o nome do usuario para efetuar os Assert. Os locais estão informados na classe
 
+OBS: ao efetuar enúmeras vezes o teste no site da OLX com o usuário, o mesmo será bloqueado.
+
 Para efetuar o teste da API do site Swapi
 1) apenas efetuar o teste em JUnit
