@@ -3,7 +3,7 @@
 Ferramentas utilizadas para o teste
 1) eclipse com o maven instalado
 2) jdk11 instalado na máquina
-3) driver utilizado para os teste foi o Chrome. Este driver está inserido na pasta driver do próprio projeto. Caso não seja executado, favor inserir o driver na pasta windows da maquina que está utilizando ou inserir nas configurações PATH do Sistema.
+3) driver utilizado para os teste foi o Chrome. Este driver está inserido na pasta target do próprio projeto. Caso não seja executado, favor inserir o driver na pasta windows da máquina que está utilizando ou inserir nas configurações PATH do Sistema.
 4) Os dois teste (Busca do OLX e Get do Swapi) estão no mesmo projeto porém em pacotes diferentes.
 
 Para efetuar o teste no site OLX deve ser verificado
