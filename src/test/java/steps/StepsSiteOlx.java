@@ -17,10 +17,11 @@ public class StepsSiteOlx {
 	private WebDriver driver;
 	private String url = "https://www.olx.com.br/";
 	// inserir o email para executar o teste
-	private String email = "teste15885@gmail.com";
+	private String email = "";
 	// inserir a senha para executar o teste
-	private String senha = "15teste885";
+	private String senha = "";
 
+	//deverá atualizar o nome do usuario na linha 86 onde se encontra "teste"
 	
 	//validacao OK
 	@Dado("que acesso o site OLX")
@@ -82,6 +83,7 @@ public class StepsSiteOlx {
 		
 		
 		//efetuando o logout
+		//deverá atualizar o nome do usuario no lugar do "teste"		
 		driver.findElement(By.xpath("//*[@id='header-container']//span[.='teste']")).click();
 		driver.findElement(By.xpath("//a[.='Sair']")).click();
 //		driver.findElement(By.xpath("//*[@class='sc-kyCyAI brUCvn']//span[.='teste']")).click();
