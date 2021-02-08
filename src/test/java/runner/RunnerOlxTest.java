@@ -11,7 +11,7 @@ import io.cucumber.junit.CucumberOptions.SnippetType;
 		features = "src\\test\\resources\\features\\olx.feature",
 		glue = "steps",
 		snippets = SnippetType.CAMELCASE,
-		tags = "@busca",
+		tags = "@buscar",
 		plugin = {"pretty", "json:target/reports/CucumberReports.json"},
 		monochrome = true
 		)

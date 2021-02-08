@@ -1,78 +1,58 @@
 [
   {
-    "line": 3,
+    "line": 4,
     "elements": [
       {
-        "start_timestamp": "2021-02-07T22:31:51.487Z",
-        "before": [
-          {
-            "result": {
-              "duration": 12702397500,
-              "status": "passed"
-            },
-            "match": {
-              "location": "steps.StepsSiteOlx.iniciando()"
-            }
-          }
-        ],
-        "line": 22,
-        "name": "selecionar estado",
+        "start_timestamp": "2021-02-08T00:02:14.201Z",
+        "line": 10,
+        "name": "buscar um produto logado e após deslogar",
         "description": "",
-        "id": "efetuar-uma-busca-no-site-da-olx;selecionar-estado",
-        "after": [
-          {
-            "result": {
-              "status": "passed"
-            },
-            "match": {
-              "location": "steps.StepsSiteOlx.finalizando()"
-            }
-          }
-        ],
+        "id": "efetuar-uma-busca-no-site-da-olx;buscar-um-produto-logado-e-após-deslogar",
         "type": "scenario",
         "keyword": "Cenario",
         "steps": [
           {
             "result": {
+              "duration": 11396122500,
               "status": "passed"
             },
-            "line": 23,
-            "name": "que acesso o site olx",
+            "line": 11,
+            "name": "que acesso o site OLX",
             "match": {
-              "location": "steps.StepsSiteOlx.queAcessoOSiteOlx()"
+              "location": "steps.StepsSiteOlx.queAcessoOSiteOLX()"
             },
             "keyword": "Dado "
           },
           {
             "result": {
-              "duration": 6846365100,
+              "duration": 11981636100,
               "status": "passed"
             },
-            "line": 24,
-            "name": "buscar o produto",
+            "line": 12,
+            "name": "logar no sistema",
             "match": {
-              "location": "steps.StepsSiteOlx.buscarOProduto()"
+              "location": "steps.StepsSiteOlx.logarNoSistema()"
             },
             "keyword": "Quando "
           },
           {
             "result": {
-              "duration": 12670166200,
+              "duration": 22252143900,
               "status": "passed"
             },
-            "line": 25,
-            "name": "selecionar o estado",
+            "line": 13,
+            "name": "procurar um produto",
             "match": {
-              "location": "steps.StepsSiteOlx.selecionarOEstado()"
+              "location": "steps.StepsSiteOlx.procurarUmProduto()"
             },
             "keyword": "E "
           },
           {
             "result": {
-              "duration": 6102152400,
+              "duration": 12009957800,
               "status": "passed"
             },
-            "line": 26,
+            "line": 14,
             "name": "exibira o produto selecionado",
             "match": {
               "location": "steps.StepsSiteOlx.exibiraOProdutoSelecionado()"
@@ -82,7 +62,10 @@
         ],
         "tags": [
           {
-            "name": "@busca"
+            "name": "@teste"
+          },
+          {
+            "name": "@buscar"
           }
         ]
       }
@@ -92,6 +75,15 @@
     "id": "efetuar-uma-busca-no-site-da-olx",
     "keyword": "Funcionalidade",
     "uri": "file:src/test/resources/features/olx.feature",
-    "tags": []
+    "tags": [
+      {
+        "name": "@teste",
+        "type": "Tag",
+        "location": {
+          "line": 3,
+          "column": 1
+        }
+      }
+    ]
   }
 ]
