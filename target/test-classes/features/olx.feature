@@ -6,30 +6,16 @@ Funcionalidade: efetuar uma busca no site da OLX
 	Quando eu acessar o site da olx
 	Devo efetuar uma busca de produto
 	
-	@buscar
-	Cenario: buscar um produto logado e após deslogar
+	@produtoOLX
+	Cenario: efetuar o login, buscar um produto e efetuar o logout
 		Dado que acesso o site OLX
-		Quando logar no sistema
-		E procurar um produto
-		Entao exibira o produto selecionado
-	
-	
-#	#@login
-#	Cenario: efetuar o login no site
-#		Dado que acesso a tela de login
-#		Quando preencher os campos email e senha
-#		E clicar no botao entrar
-#		Entao o login sera efetuado
-	#	
-#	@logout
-#	Cenario: sair do login
-#		Dado que acesso o site olx
-#		Quando clicar em sair
-#		Entao usuario efetuara o logout 
-#		
-#	@busca
-#	Cenario: selecionar estado
-#		Dado que acesso o site olx
-#		Quando buscar o produto
-#		E selecionar o estado
-#		Entao exibira o produto selecionado
+		Quando preencher o campo nome com "teste@teste.com"
+		E preencher o campo senha com "teste123456"
+		E clicar no botão Entrar 
+		Entao efetuará o login do usuario
+		Quando preencho o campo busca com "Tracker 20/21"
+		E seleciono o estado "Paraná"
+		Entao exibira o produto selecionado	
+		Quando clicar no nome do usuario
+		E clicar em sair
+		Entao efetuara o logout

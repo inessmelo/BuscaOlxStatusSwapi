@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import io.cucumber.java.After;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
@@ -16,14 +17,16 @@ public class StepsSiteOlx {
 
 	private WebDriver driver;
 	private String url = "https://www.olx.com.br/";
-	// inserir o email para executar o teste
-	private String email = "";
-	// inserir a senha para executar o teste
-	private String senha = "";
-
-	//deverá atualizar o nome do usuario na linha 86 onde se encontra "teste"
 	
-	//validacao OK
+	//Modificar o email e a senha na feature
+	//inserir o nome do usuario que será exibido no login da OLX
+	private String usuario = "";
+
+	@After
+	public void finalizando() {
+		driver.quit();
+	}
+
 	@Dado("que acesso o site OLX")
 	public void queAcessoOSiteOLX() {
 		System.setProperty("webdriver.chome.driver", "target\\drivers\\chromedriver.exe");
@@ -31,69 +34,88 @@ public class StepsSiteOlx {
 		driver.get(url);
 		driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
 		driver.manage().window().maximize();
+
 	}
 
-	
-	//validacao OK
-	@Quando("logar no sistema")
-	public void logarNoSistema() throws InterruptedException {
+	@Quando("preencher o campo nome com {string}")
+	public void preencherOCampoNomeCom(String email) {
 		driver.findElement(By.linkText("Entrar")).click();
-		driver.navigate().refresh();
-		driver.findElement(By.xpath("//*[@id='__next']//input[@type='email']")).sendKeys(email);
-		driver.findElement(By.xpath("//*[@id='__next']//input[@type='password']")).sendKeys(senha);
-		driver.findElement(By.xpath("//*[@id='__next']//button[.='Entrar']")).click();
-		
-		//atualizando pagina do navegador
-		Thread.sleep(5000);
-		
+		driver.findElement(By.cssSelector("input[autocomplete=email]")).sendKeys(email);
+
+		//validando o email digitado
+		assertEquals(email, driver.findElement(By.cssSelector("input[autocomplete=email]")).getAttribute("value"));
 	}
 
-	
-	//validacao OK
-	@Quando("procurar um produto")
-	public void procurarUmProduto() {
+	@Quando("preencher o campo senha com {string}")
+	public void preencherOCampoSenhaCom(String senha) {
+		driver.findElement(By.cssSelector("input[autocomplete=none]")).sendKeys(senha);
+
+		//validando a senha digitada
+		assertEquals(senha, driver.findElement(By.cssSelector("input[autocomplete=none]")).getAttribute("value"));
+	}
+
+	@Quando("clicar no botão Entrar")
+	public void clicarNoBotãoEntrar() {
+		driver.findElement(By.xpath(".//button[.='Entrar']")).click();
 		driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
-
-		//buscando o produto
-		driver.navigate().refresh();
-		driver.findElement(By.xpath("//*[@id='root']//a[.='Buscar']")).click();
-		driver.findElement(By.xpath("//*[@id='search-by-word-container']//input")).click();
-		driver.findElement(By.xpath("//*[@id='search-by-word-container']//input")).sendKeys("Tracker 20/21");
-		driver.findElement(By.xpath("//*[@id='search-by-word-container']//button")).click();
-		
-		//selecionando o estado do parana
-		driver.findElement(By.linkText("Paraná")).click();
-		
 	}
 
-	
-	//validação OK
+	@Entao("efetuará o login do usuario")
+	public void efetuaráOLoginDoUsuario() {
+//		driver.navigate().refresh();
+		assertEquals("Meus anúncios", driver.findElement(By.xpath(".//h1[.='Meus anúncios']")).getText());
+
+	}
+
+	@Quando("preencho o campo busca com {string}")
+	public void preenchoOCampoBuscaCom(String produto) {
+		//clicando no link Buscar
+		driver.findElement(By.linkText("Buscar")).click();
+		
+		//preenchendo o campo Buscar
+		driver.findElement(By.xpath("//*[@id='search-by-word-container']//input")).click();
+		driver.findElement(By.xpath("//*[@id='search-by-word-container']//input")).sendKeys(produto);
+		driver.findElement(By.xpath("//*[@id='search-by-word-container']//button")).click();
+
+	}
+
+	@Quando("seleciono o estado {string}")
+	public void selecionoOEstado(String estado) {
+		driver.findElement(By.linkText(estado)).click();
+	}
+
 	@Entao("exibira o produto selecionado")
 	public void exibiraOProdutoSelecionado() {
 		driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
-		
-		//validando o estado 
-		String estado = driver.findElement(By.xpath("//*[@id='content']//h1[.='\"Tracker 20/21\" no Paraná']"))
-				.getText();
-		assertEquals("\"Tracker 20/21\" no Paraná", estado);
 
-		//validando o produto
+		//validando o estado 
+		String anuncio = driver.findElement(By.xpath("//*[@id='content']//h1")).getText();
+		assertEquals("\"Tracker 20/21\" no Paraná", anuncio);
+
+		// validando o produto
 		String produto = driver.findElement(By.xpath("//*[@id='content']//h2[.='Tracker 20/21']")).getText();
 		assertEquals("Tracker 20/21", produto);
-		
-		
-		//efetuando o logout
-		//deverá atualizar o nome do usuario no lugar do "teste"		
-		driver.findElement(By.xpath("//*[@id='header-container']//span[.='teste']")).click();
+
+	}
+
+	@Quando("clicar no nome do usuario")
+	public void clicarNoNomeDoUsuario() {
+		driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
+		driver.findElement(By.xpath("//header//span[.='" + usuario + "']")).click();
+
+	}
+
+	@Quando("clicar em sair")
+	public void clicarEmSair() {
 		driver.findElement(By.xpath("//a[.='Sair']")).click();
-//		driver.findElement(By.xpath("//*[@class='sc-kyCyAI brUCvn']//span[.='teste']")).click();
-//		driver.findElement(By.xpath("//a[.='Sair']")).click();
-		
-		//validando o logout
+
+	}
+
+	@Entao("efetuara o logout")
+	public void efetuaraOLogout() {
 		String logout = driver.findElement(By.xpath("//*[@id='___gatsby']//span[.='Entrar']")).getText();
 		assertEquals("Entrar", logout);
-		
-		driver.quit();
+
 	}
-	
+
 }

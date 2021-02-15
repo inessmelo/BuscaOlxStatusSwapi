@@ -3,17 +3,17 @@
     "line": 4,
     "elements": [
       {
-        "start_timestamp": "2021-02-08T00:02:14.201Z",
+        "start_timestamp": "2021-02-15T15:36:12.741Z",
         "line": 10,
-        "name": "buscar um produto logado e após deslogar",
+        "name": "efetuar o login, buscar um produto e efetuar o logout",
         "description": "",
-        "id": "efetuar-uma-busca-no-site-da-olx;buscar-um-produto-logado-e-após-deslogar",
+        "id": "efetuar-uma-busca-no-site-da-olx;efetuar-o-login--buscar-um-produto-e-efetuar-o-logout",
         "type": "scenario",
         "keyword": "Cenario",
         "steps": [
           {
             "result": {
-              "duration": 11396122500,
+              "duration": 11219812100,
               "status": "passed"
             },
             "line": 11,
@@ -25,37 +25,145 @@
           },
           {
             "result": {
-              "duration": 11981636100,
+              "duration": 5057118300,
               "status": "passed"
             },
             "line": 12,
-            "name": "logar no sistema",
+            "name": "preencher o campo nome com \"prof.inesmelo@gmail.com\"",
             "match": {
-              "location": "steps.StepsSiteOlx.logarNoSistema()"
+              "arguments": [
+                {
+                  "val": "\"prof.inesmelo@gmail.com\"",
+                  "offset": 27
+                }
+              ],
+              "location": "steps.StepsSiteOlx.preencherOCampoNomeCom(java.lang.String)"
             },
             "keyword": "Quando "
           },
           {
             "result": {
-              "duration": 22252143900,
+              "duration": 422891700,
               "status": "passed"
             },
             "line": 13,
-            "name": "procurar um produto",
+            "name": "preencher o campo senha com \"152528iel\"",
             "match": {
-              "location": "steps.StepsSiteOlx.procurarUmProduto()"
+              "arguments": [
+                {
+                  "val": "\"152528iel\"",
+                  "offset": 28
+                }
+              ],
+              "location": "steps.StepsSiteOlx.preencherOCampoSenhaCom(java.lang.String)"
             },
             "keyword": "E "
           },
           {
             "result": {
-              "duration": 12009957800,
+              "duration": 712959800,
               "status": "passed"
             },
             "line": 14,
+            "name": "clicar no botão Entrar",
+            "match": {
+              "location": "steps.StepsSiteOlx.clicarNoBotãoEntrar()"
+            },
+            "keyword": "E "
+          },
+          {
+            "result": {
+              "duration": 3907108500,
+              "status": "passed"
+            },
+            "line": 15,
+            "name": "efetuará o login do usuario",
+            "match": {
+              "location": "steps.StepsSiteOlx.efetuaráOLoginDoUsuario()"
+            },
+            "keyword": "Entao "
+          },
+          {
+            "result": {
+              "duration": 14916939000,
+              "status": "passed"
+            },
+            "line": 16,
+            "name": "preencho o campo busca com \"Tracker 20/21\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Tracker 20/21\"",
+                  "offset": 27
+                }
+              ],
+              "location": "steps.StepsSiteOlx.preenchoOCampoBuscaCom(java.lang.String)"
+            },
+            "keyword": "Quando "
+          },
+          {
+            "result": {
+              "duration": 5030752700,
+              "status": "passed"
+            },
+            "line": 17,
+            "name": "seleciono o estado \"Paraná\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Paraná\"",
+                  "offset": 19
+                }
+              ],
+              "location": "steps.StepsSiteOlx.selecionoOEstado(java.lang.String)"
+            },
+            "keyword": "E "
+          },
+          {
+            "result": {
+              "duration": 6450807600,
+              "status": "passed"
+            },
+            "line": 18,
             "name": "exibira o produto selecionado",
             "match": {
               "location": "steps.StepsSiteOlx.exibiraOProdutoSelecionado()"
+            },
+            "keyword": "Entao "
+          },
+          {
+            "result": {
+              "duration": 461956100,
+              "status": "passed"
+            },
+            "line": 19,
+            "name": "clicar no nome do usuario",
+            "match": {
+              "location": "steps.StepsSiteOlx.clicarNoNomeDoUsuario()"
+            },
+            "keyword": "Quando "
+          },
+          {
+            "result": {
+              "duration": 3808467700,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "clicar em sair",
+            "match": {
+              "location": "steps.StepsSiteOlx.clicarEmSair()"
+            },
+            "keyword": "E "
+          },
+          {
+            "result": {
+              "duration": 202167200,
+              "status": "passed"
+            },
+            "line": 21,
+            "name": "efetuara o logout",
+            "match": {
+              "location": "steps.StepsSiteOlx.efetuaraOLogout()"
             },
             "keyword": "Entao "
           }
@@ -65,7 +173,7 @@
             "name": "@teste"
           },
           {
-            "name": "@buscar"
+            "name": "@produtoOLX"
           }
         ]
       }
