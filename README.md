@@ -7,7 +7,7 @@ Ferramentas utilizadas para o teste
 4) Os dois teste (Busca do OLX e Get do Swapi) estão no mesmo projeto porém em pacotes diferentes.
 
 Para efetuar o teste no site OLX deve ser verificado
-1) deverá o usuário inserir o email e senha na classe Steps para conseguir efetuar o teste com sucesso
+1) deverá o usuário inserir o email e senha na feature para conseguir efetuar o teste com sucesso
 2) deverá mudar o nome do usuario para efetuar os Assert. Os locais estão informados na classe
 
 OBS: ao efetuar inúmeras vezes o teste no site da OLX com o usuário, o mesmo será bloqueado.
